@@ -25,6 +25,12 @@ Sender & Sender::operator=(const Sender & source) {
 }
 
  ostream & operator<<(ostream & os, const Sender & x) {
+    os << x;
 	 return os;
+}
+
+bool Sender::send(Messages &msg) {
+    cout << msg << endl;
+    return false;
 }
 

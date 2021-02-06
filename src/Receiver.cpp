@@ -5,9 +5,11 @@
 #include "Receiver.h"
 
 Receiver::Receiver() {
+    msg = new Messages();
 }
 
 Receiver::~Receiver() {
+    delete msg;
 }
 
 Receiver::Receiver(Receiver & source) {
@@ -26,5 +28,10 @@ Receiver & Receiver::operator=(const Receiver & source) {
 
  ostream & operator<<(ostream & os, const Receiver & x) {
 	 return os;
+}
+
+Messages &Receiver::receive() {
+    msg->setMsg("Message to receive ...");
+    return *msg;
 }
 

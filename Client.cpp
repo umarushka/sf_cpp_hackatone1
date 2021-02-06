@@ -9,5 +9,15 @@
 
 int main()
 {
+	Sender sn;
+	Messages msg;
+	Receiver rc;
+
+	msg.setMsg("Message for receive ...");
+    sn.send(msg);
+	cout << msg << endl;
+	cout << rc.receive() << endl;
+	cout << "Client running ..." << endl;
+	getchar();
 	return 0;	
 }

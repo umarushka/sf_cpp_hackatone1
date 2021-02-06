@@ -2,10 +2,14 @@
 #define _RECEIVER_H
 
 #include <iostream>
+#include "Messages.h"
 
 using namespace std;
 
 class Receiver {
+
+    Messages *msg;
+
   public:
     Receiver();
 
@@ -20,6 +24,8 @@ class Receiver {
     Receiver & operator=(const Receiver & source);
 
     friend  ostream & operator<<(ostream & os, const Receiver & x);
+
+	Messages & receive();
 
 };
 #endif
