@@ -1,7 +1,7 @@
 /*
 	ћодуль\класс формировани€ сообщений пользовател€
  */
- 
+
 #include "Messages.h"
 
 Messages::Messages() {
