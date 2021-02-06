@@ -37,14 +37,16 @@ cmake-build-debug/
 
 # VS 2012
 # ALL_BUILD.*
+Client/x64/
 x64/
 *.opensdf
 cmake_install.cmake
 CMakeCache.txt
 CMakeFiles/
 Client.dir/
-Client.sdf
-Debug/
-Client.v11.suo
-Client.v16.suo
+Client/Client.sdf
+Client/Debug/
+# Debug/
+Client/Client.v11.suo
+Client/Client.v16.suo
 # ZERO_CHECK.*
