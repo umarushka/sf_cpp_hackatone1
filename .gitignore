@@ -34,3 +34,14 @@ cmake-build-debug/
 *.exe
 *.out
 *.app
+
+# VS 2012
+# ALL_BUILD.*
+x64/
+*.opensdf
+cmake_install.cmake
+CMakeCache.txt
+CMakeFiles/
+Client.dir/
+Client.sdf
+# ZERO_CHECK.*
