@@ -1,6 +1,9 @@
 #ifndef _INTERACTIONCONSOLE_H
 #define _INTERACTIONCONSOLE_H
 
+#include <iostream>
+
+using namespace std;
 
 class InterActionConsole {
   public:

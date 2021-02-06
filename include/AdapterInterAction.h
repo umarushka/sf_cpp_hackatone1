@@ -1,6 +1,9 @@
 #ifndef _ADAPTERINTERACTION_H
 #define _ADAPTERINTERACTION_H
 
+#include <iostream>
+
+using namespace std;
 
 class AdapterInterAction {
   public:

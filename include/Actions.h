@@ -1,6 +1,9 @@
 #ifndef _ACTIONS_H
 #define _ACTIONS_H
 
+#include <iostream>
+
+using namespace std;
 
 class Actions {
   public:

@@ -1,6 +1,9 @@
 #ifndef _USERS_H
 #define _USERS_H
 
+#include <iostream>
+
+using namespace std;
 
 class Users {
   public:

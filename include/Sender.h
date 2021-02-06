@@ -1,6 +1,9 @@
 #ifndef _SENDER_H
 #define _SENDER_H
 
+#include <iostream>
+
+using namespace std;
 
 class Sender {
   public:

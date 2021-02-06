@@ -1,6 +1,9 @@
 #ifndef _CHANNEL_H
 #define _CHANNEL_H
 
+#include <iostream>
+
+using namespace std;
 
 class Channel {
   public:
