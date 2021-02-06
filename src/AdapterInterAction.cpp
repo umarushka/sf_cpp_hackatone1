@@ -1,4 +1,7 @@
-
+/*
+	Модуль\класс адаптера к интерфейсу пользователя
+ */
+ 
 #include "AdapterInterAction.h"
 
 AdapterInterAction::AdapterInterAction() {

@@ -1,4 +1,7 @@
-
+/*
+	Модуль\класс приёма сообщения
+ */
+ 
 #include "Receiver.h"
 
 Receiver::Receiver() {

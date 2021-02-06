@@ -1,4 +1,7 @@
-
+/*
+	Модуль\класс посылки сообщения
+ */
+	
 #include "Sender.h"
 
 Sender::Sender() {

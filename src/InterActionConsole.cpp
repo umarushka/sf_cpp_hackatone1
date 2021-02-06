@@ -1,3 +1,6 @@
+/*
+	Модуль\класс интерфейса пользователя
+ */
 
 #include "InterActionConsole.h"
 
