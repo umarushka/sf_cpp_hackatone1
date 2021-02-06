@@ -44,4 +44,7 @@ CMakeCache.txt
 CMakeFiles/
 Client.dir/
 Client.sdf
+Debug/
+Client.v11.suo
+Client.v16.suo
 # ZERO_CHECK.*
