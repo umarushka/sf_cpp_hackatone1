@@ -2,14 +2,22 @@
 #define _USERS_H
 
 #include <iostream>
+#include "Messages.h"
 
 using namespace std;
 
 class Users {
+public:
+    const Messages &getMsg() const;
 
+    void setMsg(const Messages &msg);
+
+private:
     string name;
     int id;
     int level;
+    Messages msg;
+
 public:
     const string &getName() const;
 

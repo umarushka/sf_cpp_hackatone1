@@ -5,9 +5,13 @@
 #include "Sender.h"
 
 Sender::Sender() {
+    someSender = new Subject<Users>();
+    sS = new Channel<Users>();
 }
 
 Sender::~Sender() {
+    delete someSender;
+    delete sS;
 }
 
 Sender::Sender(Sender & source) {
@@ -31,6 +35,17 @@ Sender & Sender::operator=(const Sender & source) {
 
 bool Sender::send(Messages &msg) {
     cout << msg << endl;
+    Users users = someSender->getState();
+    users.setMsg(msg);
+    someSender->setState(users);
     return false;
+}
+
+Subject<Users> *Sender::getSomeSender() const {
+    return someSender;
+}
+
+void Sender::setSomeSender(Subject<Users> *someSender) {
+    Sender::someSender = someSender;
 }
 

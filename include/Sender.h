@@ -3,11 +3,23 @@
 
 #include <iostream>
 #include "Messages.h"
+#include "Users.h"
+#include "Subject.h"
+#include "Channel.h"
 
 using namespace std;
 
 class Sender {
-  public:
+
+    Subject<Users> *someSender;
+    Channel<Users> *sS;
+
+public:
+    Subject<Users> *getSomeSender() const;
+
+    void setSomeSender(Subject<Users> *someSender);
+
+public:
     Sender();
 
     virtual ~Sender();

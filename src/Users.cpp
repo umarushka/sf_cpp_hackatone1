@@ -52,3 +52,11 @@ void Users::setLevel(int level) {
     Users::level = level;
 }
 
+const Messages &Users::getMsg() const {
+    return msg;
+}
+
+void Users::setMsg(const Messages &msg) {
+    Users::msg = msg;
+}
+

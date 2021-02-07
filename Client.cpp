@@ -12,6 +12,8 @@ int main()
 	Sender sn;
 	Messages msg;
 	Receiver rc;
+	Users users;
+//	Channel<Users> *ch = new Channel<Users>();
 
 	msg.setMsg("Message for receive ...");
     sn.send(msg);
