@@ -17,8 +17,6 @@ int main()
     Users users;
 
     users.setId(1);
-    users.setLevel(1);
-    users.setName("Test");
     users.setNickname("User");
     users.setPassword("");
     users.setRating(10);

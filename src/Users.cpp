@@ -6,7 +6,7 @@
 
 Users::Users() {}
 
-Users::Users(string name, int id, int level): _name(name), _id(id), _level(level) {
+Users::Users(string name, int id, int level): _nickname(name), _id(id), _rating(level) {
 }
 
 Users::~Users() {
@@ -33,28 +33,12 @@ Users & Users::operator=(const Users & source) {
 	 return os;
 }
 
-const string &Users::getName() const {
-    return _name;
-}
-
-void Users::setName(const string &name) {
-    Users::_name = name;
-}
-
 int Users::getId() const {
     return _id;
 }
 
 void Users::setId(int id) {
     Users::_id = id;
-}
-
-int Users::getLevel() const {
-    return _level;
-}
-
-void Users::setLevel(int level) {
-    Users::_level = level;
 }
 
 const Messages &Users::getMsg() const {
