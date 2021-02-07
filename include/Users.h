@@ -2,39 +2,50 @@
 #define _USERS_H
 
 #include <iostream>
+#include "Messages.h"
 
 using namespace std;
 
 class Users {
+public:
+    const Messages &getMsg() const;
+
+    void setMsg(const Messages &msg);
+
+private:
+    string name;
+    int id;
+    int level;
+    Messages msg;
 
 public:
-    Users(string nickname, string password,double rating);
+    const string &getName() const;
+
+    void setName(const string &name);
+
+    int getId() const;
+
+    void setId(int id);
+
+    int getLevel() const;
+
+    void setLevel(int level);
+
+public:
+    Users();
 
     virtual ~Users();
 
-    void setnickname(string);
-    string getnickname();
-
-    void setpassword(string);
-    string getpassword();
-
-    void setrating(double);
-    double getrating();
-
     Users(Users & source);
 
-    /*Users(const Users & source);
+    Users(const Users & source);
 
     Users & operator=(Users & source);
 
     Users & operator=(const Users & source);
 
-    friend  ostream & operator<<(ostream & os, const Users & x);*/
+    friend  ostream & operator<<(ostream & os, const Users & x);
 
-private:
-    string _nickname;
-    string _password;
-    double _rating;
 
 };
 #endif

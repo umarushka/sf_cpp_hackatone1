@@ -56,3 +56,35 @@ Users & Users::operator=(const Users & source) {
 	 return os;
 }*/
 
+const string &Users::getName() const {
+    return name;
+}
+
+void Users::setName(const string &name) {
+    Users::name = name;
+}
+
+int Users::getId() const {
+    return id;
+}
+
+void Users::setId(int id) {
+    Users::id = id;
+}
+
+int Users::getLevel() const {
+    return level;
+}
+
+void Users::setLevel(int level) {
+    Users::level = level;
+}
+
+const Messages &Users::getMsg() const {
+    return msg;
+}
+
+void Users::setMsg(const Messages &msg) {
+    Users::msg = msg;
+}
+

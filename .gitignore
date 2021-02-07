@@ -50,3 +50,7 @@ Client/Debug/
 Client/Client.v11.suo
 Client/Client.v16.suo
 # ZERO_CHECK.*
+
+# Files
+Main.cpp
+include/Subject.hpp
