@@ -162,7 +162,7 @@ void InterActionConsole::enter(std::string userName)
 userInput InterActionConsole::getInput()
 {
     userInput getedInput;
-    std::cin >> getedInput.str;
+    std::getline(std::cin, getedInput.str);
     if (getedInput.str[0] == '/')
     {
         getedInput.type = InputType::COMMAND;
