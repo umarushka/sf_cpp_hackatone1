@@ -6,7 +6,24 @@
 using namespace std;
 
 class Users {
-  public:
+
+    string name;
+    int id;
+    int level;
+public:
+    const string &getName() const;
+
+    void setName(const string &name);
+
+    int getId() const;
+
+    void setId(int id);
+
+    int getLevel() const;
+
+    void setLevel(int level);
+
+public:
     Users();
 
     virtual ~Users();
