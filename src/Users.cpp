@@ -4,16 +4,44 @@
 
 #include "Users.h"
 
-Users::Users() {
+Users::Users(string nickname,string password,double rating): _nickname(nickname), _password(password), _rating(rating) {
 }
 
 Users::~Users() {
 }
 
-Users::Users(Users & source) {
+void Users::setnickname(string nickname) {
+	_nickname = nickname;
 }
 
-Users::Users(const Users & source) {
+string Users::getnickname() {
+	return _nickname;
+}
+
+void Users::setpassword(string password) {
+	_password = password;
+}
+
+string Users::getpassword() {
+	return _password;
+}
+
+void Users::setrating(double rating) {
+	_rating = rating;
+}
+
+double Users::getrating() {
+	return _rating;
+}
+
+
+Users::Users(Users & source) {
+	this->_nickname = source._nickname;
+	this->_password = source._password;
+	this->_rating = source._rating;
+}
+
+/*Users::Users(const Users & source) {
 }
 
 Users & Users::operator=(Users & source) {
@@ -26,5 +54,5 @@ Users & Users::operator=(const Users & source) {
 
  ostream & operator<<(ostream & os, const Users & x) {
 	 return os;
-}
+}*/
 
