@@ -13,9 +13,6 @@ Users::~Users() {
 }
 
 Users::Users(Users & source) {
-	this->_nickname = source._nickname;
-	this->_password = source._password;
-	this->_rating = source._rating;
 }
 
 Users::Users(const Users & source) {
