@@ -5,13 +5,11 @@
 #include "Sender.h"
 
 Sender::Sender() {
-    someSender = new Subject<Users>();
-    sS = new Channel<Users>();
+    someSender = new Channel<Users>();
 }
 
 Sender::~Sender() {
     delete someSender;
-    delete sS;
 }
 
 Sender::Sender(Sender & source) {
@@ -41,11 +39,11 @@ bool Sender::send(Messages &msg) {
     return false;
 }
 
-Subject<Users> *Sender::getSomeSender() const {
+Channel<Users> *Sender::getSomeSender() const {
     return someSender;
 }
 
-void Sender::setSomeSender(Subject<Users> *someSender) {
+void Sender::setSomeSender(Channel<Users> *someSender) {
     Sender::someSender = someSender;
 }
 

@@ -11,13 +11,12 @@ using namespace std;
 
 class Sender {
 
-    Subject<Users> *someSender;
-    Channel<Users> *sS;
+    Channel<Users> *someSender;
 
 public:
-    Subject<Users> *getSomeSender() const;
+    Channel<Users> *getSomeSender() const;
 
-    void setSomeSender(Subject<Users> *someSender);
+    void setSomeSender(Channel<Users> *someSender);
 
 public:
     Sender();
