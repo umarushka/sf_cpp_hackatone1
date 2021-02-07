@@ -6,8 +6,17 @@
 using namespace std;
 
 class Messages {
+
+    string msg;
+
   public:
     Messages();
+
+    const string &getMsg() const;
+
+	string &getMsg();
+
+    void setMsg(const string &msg);
 
     virtual ~Messages();
 
@@ -20,6 +29,8 @@ class Messages {
     Messages & operator=(const Messages & source);
 
     friend  ostream & operator<<(ostream & os, const Messages & x);
+
+
 
 };
 #endif

@@ -4,27 +4,26 @@
 
 #include "Channel.h"
 
-Channel::Channel() {
+template <typename StateType>
+Channel<StateType>::Channel(Channel<StateType> & source) {
 }
 
-Channel::~Channel() {
+template <typename StateType>
+Channel<StateType>::Channel(const Channel<StateType> & source) {
 }
 
-Channel::Channel(Channel & source) {
-}
-
-Channel::Channel(const Channel & source) {
-}
-
-Channel & Channel::operator=(Channel & source) {
+template <typename StateType>
+Channel<StateType> & Channel<StateType>::operator=(Channel<StateType> & source) {
 	return source;
 }
 
-Channel & Channel::operator=(const Channel & source) {
-	return const_cast<Channel &>(source);
+template <typename StateType>
+Channel<StateType> & Channel<StateType>::operator=(const Channel<StateType> & source) {
+	return const_cast<Channel<StateType> &>(source);
 }
 
- ostream & operator<<(ostream & os, const Channel & x) {
+template <typename StateType>
+ ostream & operator<<(ostream & os, const Channel<StateType> & x) {
 	 return os;
 }
 

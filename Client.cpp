@@ -1,13 +1,25 @@
-#include "..\include\Actions.h"
-#include "..\include\AdapterInterAction.h"
-#include "..\include\Channel.h"
-#include "..\include\Messages.h"
-#include "..\include\Receiver.h"
-#include "..\include\Sender.h"
-#include "..\include\Users.h"
+#include "Actions.h"
+#include "AdapterInterAction.h"
+#include "Channel.h"
+#include "InterActionConsole.h"
+#include "Messages.h"
+#include "Receiver.h"
+#include "Sender.h"
+#include "Users.h"
 
 int main()
 {
-    AdapterInterAction adapterInterAction;
+	Sender sn;
+	Messages msg;
+	Receiver rc;
+	Users users;
+//	Channel<Users> *ch = new Channel<Users>();
+
+	msg.setMsg("Message for receive ...");
+    sn.send(msg);
+	cout << msg << endl;
+	cout << rc.receive() << endl;
+	cout << "Client running ..." << endl;
+	getchar();
 	return 0;	
 }

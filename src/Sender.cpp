@@ -5,9 +5,11 @@
 #include "Sender.h"
 
 Sender::Sender() {
+    someSender = new Channel<Users>();
 }
 
 Sender::~Sender() {
+    delete someSender;
 }
 
 Sender::Sender(Sender & source) {
@@ -25,6 +27,23 @@ Sender & Sender::operator=(const Sender & source) {
 }
 
  ostream & operator<<(ostream & os, const Sender & x) {
+    os << x;
 	 return os;
+}
+
+bool Sender::send(Messages &msg) {
+    cout << msg << endl;
+    Users users = someSender->getState();
+    users.setMsg(msg);
+    someSender->setState(users);
+    return false;
+}
+
+Channel<Users> *Sender::getSomeSender() const {
+    return someSender;
+}
+
+void Sender::setSomeSender(Channel<Users> *someSender) {
+    Sender::someSender = someSender;
 }
 

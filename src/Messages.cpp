@@ -25,6 +25,18 @@ Messages & Messages::operator=(const Messages & source) {
 }
 
  ostream & operator<<(ostream & os, const Messages & x) {
+	 os << x.msg.c_str();
 	 return os;
 }
 
+const string &Messages::getMsg() const {
+    return msg;
+}
+
+void Messages::setMsg(const string &msg) {
+    this->msg = msg;
+}
+
+string &Messages::getMsg() {
+    return msg;
+}
