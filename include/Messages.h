@@ -26,6 +26,8 @@ class Messages {
 
     Messages & operator=(Messages & source);
 
+    bool operator==(Messages & source);
+
     Messages & operator=(const Messages & source);
 
     friend  ostream & operator<<(ostream & os, const Messages & x);

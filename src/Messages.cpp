@@ -20,6 +20,10 @@ Messages & Messages::operator=(Messages & source) {
 	return source;
 }
 
+bool Messages::operator==(Messages & source) {
+    return this->msg == source.getMsg();
+}
+
 Messages & Messages::operator=(const Messages & source) {
 	return const_cast<Messages &>(source);
 }

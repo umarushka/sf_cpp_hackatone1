@@ -5,7 +5,9 @@
 #include "Sender.h"
 
 Sender::Sender() {
-    someSender = new Channel<Users>();
+}
+
+Sender::Sender(Channel<Users> *_someSender) : someSender(_someSender) {
 }
 
 Sender::~Sender() {
@@ -32,7 +34,6 @@ Sender & Sender::operator=(const Sender & source) {
 }
 
 bool Sender::send(Messages &msg) {
-    cout << msg << endl;
     Users users = someSender->getState();
     users.setMsg(msg);
     someSender->setState(users);

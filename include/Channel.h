@@ -13,7 +13,7 @@ using namespace std;
 template <typename StateType>
 class Channel {
   public:
-    Channel()  : state() {};
+    Channel(StateType _state)  : state(_state) {};
 
     virtual ~Channel() {};
 

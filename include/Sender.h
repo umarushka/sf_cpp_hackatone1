@@ -21,6 +21,8 @@ public:
 public:
     Sender();
 
+    Sender(Channel<Users> *someSender);
+
     virtual ~Sender();
 
     Sender(Sender & source);
