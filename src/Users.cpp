@@ -4,7 +4,7 @@
 
 #include "Users.h"
 
-Users::Users(string nickname,string password,double rating): _nickname(nickname), _password(password), _rating(rating) {
+/*Users::Users(string name,int id,int level): _name(name), _id(id), _level(level) {
 }
 
 Users::~Users() {
