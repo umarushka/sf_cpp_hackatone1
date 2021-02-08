@@ -19,15 +19,19 @@ EchoUser::EchoUser(EchoUser & source) {
 }
 
 EchoUser::EchoUser(const EchoUser & source) {
+    
 }
 
 EchoUser & EchoUser::operator=(EchoUser & source) {
+    return source;
 }
 
 EchoUser & EchoUser::operator=(const EchoUser & source) {
+    return const_cast<EchoUser&>(source);
 }
 
  ostream & operator<<(ostream & os, const EchoUser & x) {
+    return os;
 }
 
 bool EchoUser::hasPacket() {

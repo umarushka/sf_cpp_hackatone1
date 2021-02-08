@@ -14,18 +14,19 @@
     <ProjectGuid>{1224EB73-3ECC-4DB3-843F-D8504BA458B5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Client</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -53,6 +54,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,7 +82,9 @@
     <ClInclude Include="..\include\Actions.h" />
     <ClInclude Include="..\include\AdapterInterAction.h" />
     <ClInclude Include="..\include\Channel.h" />
+    <ClInclude Include="..\include\EchoUser.h" />
     <ClInclude Include="..\include\InterActionConsole.h" />
+    <ClInclude Include="..\include\LoginData.h" />
     <ClInclude Include="..\include\Messages.h" />
     <ClInclude Include="..\include\Receiver.h" />
     <ClInclude Include="..\include\Sender.h" />
@@ -91,7 +95,9 @@
     <ClCompile Include="..\src\Actions.cpp" />
     <ClCompile Include="..\src\AdapterInterAction.cpp" />
     <ClCompile Include="..\src\Channel.cpp" />
+    <ClCompile Include="..\src\EchoUser.cpp" />
     <ClCompile Include="..\src\InterActionConsole.cpp" />
+    <ClCompile Include="..\src\LoginData.cpp" />
     <ClCompile Include="..\src\Messages.cpp" />
     <ClCompile Include="..\src\Receiver.cpp" />
     <ClCompile Include="..\src\Sender.cpp" />
