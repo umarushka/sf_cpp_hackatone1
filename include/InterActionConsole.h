@@ -40,6 +40,7 @@ public:
     greetingAnswers start();
     void addMessageToChat(std::string message); // тут подумать как лучше передавать строку копированием или еще как...
     LoginData login();
+    LoginData registration();
     void enter(std::string userName);
     userInput getInput();
     ~InterActionConsole();

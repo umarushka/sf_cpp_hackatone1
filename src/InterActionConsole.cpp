@@ -97,7 +97,7 @@ void InterActionConsole::drawChatFrameBottom()
 
 greetingAnswers InterActionConsole::start()
 {
-    char answer{};
+    std::string answer{};
     greetingAnswers retAnswer = NOTANSWER;
     addMessageToChat("CHAT FOR DEVELOPERS DEMO Version 0.1");
     addMessageToChat("Created By: ");
@@ -105,27 +105,25 @@ greetingAnswers InterActionConsole::start()
     addMessageToChat("2. Registration");
     addMessageToChat("3. Exit");
     addMessageToChat("<System>: Enter Your Choice :=> ");
-    std::cin >> answer;
-    if (answer == '1')
+    std::getline(std::cin, answer);
+    if (answer[0] == '1')
     {
-        addMessageToChat("<System>: You select Login ");
+        addMessageToChat("<System>: You select Login.");
         retAnswer = LOGIN;
     }
-    else if (answer == '2')
+    else if (answer[0] == '2')
     {
-        std::cout << "<System>: You select Registration ";
+        addMessageToChat("<System>: You select Registration.");
         retAnswer = REGISTRARION;
     }
-    else if (answer == '3')
+    else if (answer[0] == '3')
     {
-        std::cout << "<System>: You select Exit ";
+        addMessageToChat("<System>: You select Exit.");
         retAnswer = EXIT;
     }
     else
     {
-        addMessageToChat(" ");
-        addMessageToChat(" ");
-        std::cout << "<System>: You select its not valid ";
+        addMessageToChat("<System>: You select its not valid.");
     }
     return retAnswer;
 }
@@ -150,6 +148,40 @@ LoginData InterActionConsole::login()
         addMessageToChat("<System>: Repeat enter Your Password :=> ");
         std::cin >> answer;
     }
+    return data;
+}
+
+LoginData InterActionConsole::registration()
+{
+    std::string answer{};
+    std::string rAnswer{ ":" }; // строка для записи повторного ввода пароля, инициализиуерся символом который не может быть в ответе, для дальнешего сравнения
+    LoginData data;
+    addMessageToChat("<System>: Enter new Login :=> ");
+    std::cin >> answer;
+    while (!data.setLogin(answer))
+    {
+        addMessageToChat("<System>: Login is not correct, input only English letters or numbers.");
+        addMessageToChat("<System>: Repeat enter Your Login :=> ");
+        std::cin >> answer;
+    }
+    while (answer != rAnswer)
+    {
+        addMessageToChat("<System>: Enter new Password :=> ");
+        std::cin >> answer;
+        while (!data.setPassword(answer))
+        {
+            addMessageToChat("<System>: Password is not correct, input only English letters or numbers.");
+            addMessageToChat("<System>: Repeat enter Your Password :=> ");
+            std::cin >> answer;
+        }
+        addMessageToChat("<System>: ReEnter new Password :=> ");
+        std::cin >> rAnswer;
+        if (answer != rAnswer)
+        {
+            addMessageToChat("<System>: Passwords do not match. ");
+        }
+    }
+    addMessageToChat("<System>: Registration completed. ");
     return data;
 }
 
