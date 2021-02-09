@@ -4,9 +4,13 @@
 
 #include "AdapterInterAction.h"
 #include "InterActionConsole.h"
+#include "Sender.h"
+#include "Messages.h"
+#include "Receiver.h"
 
 AdapterInterAction::AdapterInterAction()
 {
+    Sender chatChannel("chatData"); // создание канала приема сообщений
     InterActionConsole& UI = InterActionConsole::getInstance();
     greetingAnswers stAnswer = greetingAnswers::NOTANSWER;
     while (stAnswer == NOTANSWER)
@@ -18,17 +22,31 @@ AdapterInterAction::AdapterInterAction()
             stAnswer = greetingAnswers::LOGIN;
         }
         if (stAnswer == greetingAnswers::LOGIN)
-        {
+        {   
+            
             LoginData inputLogin = UI.login();
-            if ((inputLogin.getLogin() == "Test") &&
+            if ((inputLogin.getLogin() == "123") &&
                 (inputLogin.getPassword() == "123"))
             {
+                std::vector<Message> log = chatChannel.getLog();
+                for (Message msg : log)
+                {
+                    UI.addStrToChat("<TestUser>: " + msg.str);
+                }
                 UI.enter(inputLogin.getLogin());
-                userInput input = UI.getInput();
+                userInput input;
+                input = UI.getInput();
+                //Основной цикл работы чата
                 while (input.type != COMMAND)
                 {
-                    UI.addMessageToChat("<" + inputLogin.getLogin() + ">" + input.str);
                     input = UI.getInput();
+                    UI.addStrToChat("<" + inputLogin.getLogin() + ">: "+ input.str );
+                    Message sendMsg;
+                    sendMsg.type = messageType::ECHO;
+                    sendMsg.fromUserId = 2; // Заглушка пока нет пользователей
+                    sendMsg.str = input.str;
+                    // id = 2;
+                    chatChannel.addMessage(sendMsg);    
                 }
                 if (input.str == "/exit")
                 {
@@ -37,7 +55,7 @@ AdapterInterAction::AdapterInterAction()
             }
             else 
             {
-                UI.addMessageToChat("<System>: Login is not correct. Try agin.");
+                UI.addStrToChat("<System>: Login is not correct. Try agin.");
                 stAnswer = greetingAnswers::NOTANSWER; // Если логин не подошел, то снова запрашиваем.
             }
         }

@@ -39,7 +39,7 @@ void InterActionConsole::drawChatFrameTop()
     std::cout << chFrameTopLine << std::endl;
 }
 
-void InterActionConsole::addMessageToChat(std::string message) // тут скорре всего будут исключения типа out_of_range
+void InterActionConsole::addStrToChat(std::string message) // тут скорре всего будут исключения типа out_of_range
 {
     // сообщение разбиваем на строки
     while ( static_cast<int>(message.length()) / (_dataStrLength - 2) > 0)  // - 2 для символов | на краях рамки
@@ -99,31 +99,31 @@ greetingAnswers InterActionConsole::start()
 {
     std::string answer{};
     greetingAnswers retAnswer = NOTANSWER;
-    addMessageToChat("CHAT FOR DEVELOPERS DEMO Version 0.1");
-    addMessageToChat("Created By: ");
-    addMessageToChat("1. Login");
-    addMessageToChat("2. Registration");
-    addMessageToChat("3. Exit");
-    addMessageToChat("<System>: Enter Your Choice :=> ");
+    addStrToChat("CHAT FOR DEVELOPERS DEMO Version 0.1");
+    addStrToChat("Created By: ");
+    addStrToChat("1. Login");
+    addStrToChat("2. Registration");
+    addStrToChat("3. Exit");
+    addStrToChat("<System>: Enter Your Choice :=> ");
     std::getline(std::cin, answer);
     if (answer[0] == '1')
     {
-        addMessageToChat("<System>: You select Login.");
+        addStrToChat("<System>: You select Login.");
         retAnswer = LOGIN;
     }
     else if (answer[0] == '2')
     {
-        addMessageToChat("<System>: You select Registration.");
+        addStrToChat("<System>: You select Registration.");
         retAnswer = REGISTRARION;
     }
     else if (answer[0] == '3')
     {
-        addMessageToChat("<System>: You select Exit.");
+        addStrToChat("<System>: You select Exit.");
         retAnswer = EXIT;
     }
     else
     {
-        addMessageToChat("<System>: You select its not valid.");
+        addStrToChat("<System>: You select its not valid.");
     }
     return retAnswer;
 }
@@ -132,20 +132,20 @@ LoginData InterActionConsole::login()
 {
     std::string answer{};
     LoginData data;
-    addMessageToChat("<System>: Enter Your Login :=> ");
+    addStrToChat("<System>: Enter Your Login :=> ");
     std::cin >> answer;
     while(!data.setLogin(answer))
     {
-        addMessageToChat("<System>: Login is not correct, input only English letters or numbers.");
-        addMessageToChat("<System>: Repeat enter Your Login :=> ");
+        addStrToChat("<System>: Login is not correct, input only English letters or numbers.");
+        addStrToChat("<System>: Repeat enter Your Login :=> ");
         std::cin >> answer;
     }
-    addMessageToChat("<System>: Enter Your Password :=> ");
+    addStrToChat("<System>: Enter Your Password :=> ");
     std::cin >> answer;
     while(!data.setPassword(answer))
     {
-        addMessageToChat("<System>: Password is not correct, input only English letters or numbers.");
-        addMessageToChat("<System>: Repeat enter Your Password :=> ");
+        addStrToChat("<System>: Password is not correct, input only English letters or numbers.");
+        addStrToChat("<System>: Repeat enter Your Password :=> ");
         std::cin >> answer;
     }
     return data;
@@ -156,39 +156,39 @@ LoginData InterActionConsole::registration()
     std::string answer{};
     std::string rAnswer{ ":" }; // строка для записи повторного ввода пароля, инициализиуерся символом который не может быть в ответе, для дальнешего сравнения
     LoginData data;
-    addMessageToChat("<System>: Enter new Login :=> ");
+    addStrToChat("<System>: Enter new Login :=> ");
     std::cin >> answer;
     while (!data.setLogin(answer))
     {
-        addMessageToChat("<System>: Login is not correct, input only English letters or numbers.");
-        addMessageToChat("<System>: Repeat enter Your Login :=> ");
+        addStrToChat("<System>: Login is not correct, input only English letters or numbers.");
+        addStrToChat("<System>: Repeat enter Your Login :=> ");
         std::cin >> answer;
     }
     while (answer != rAnswer)
     {
-        addMessageToChat("<System>: Enter new Password :=> ");
+        addStrToChat("<System>: Enter new Password :=> ");
         std::cin >> answer;
         while (!data.setPassword(answer))
         {
-            addMessageToChat("<System>: Password is not correct, input only English letters or numbers.");
-            addMessageToChat("<System>: Repeat enter Your Password :=> ");
+            addStrToChat("<System>: Password is not correct, input only English letters or numbers.");
+            addStrToChat("<System>: Repeat enter Your Password :=> ");
             std::cin >> answer;
         }
-        addMessageToChat("<System>: ReEnter new Password :=> ");
+        addStrToChat("<System>: ReEnter new Password :=> ");
         std::cin >> rAnswer;
         if (answer != rAnswer)
         {
-            addMessageToChat("<System>: Passwords do not match. ");
+            addStrToChat("<System>: Passwords do not match. ");
         }
     }
-    addMessageToChat("<System>: Registration completed. ");
+    addStrToChat("<System>: Registration completed. ");
     return data;
 }
 
 void InterActionConsole::enter(std::string userName)
 {
     _userName = userName;
-    addMessageToChat("<System>: Welcom to the chat.");
+    addStrToChat("<System>: Welcom to the chat.");
 }
 
 userInput InterActionConsole::getInput()
@@ -197,15 +197,15 @@ userInput InterActionConsole::getInput()
     std::getline(std::cin, getedInput.str);
     if (getedInput.str[0] == '/')
     {
-        getedInput.type = InputType::COMMAND;
+        getedInput.type = messageType::COMMAND;
     }
     else if (getedInput.str[0] == '@')
     {
-        getedInput.type = InputType::PRIVATE_MESSAGE;
+        getedInput.type = messageType::PRIVATE;
     }
     else
     {
-        getedInput.type = InputType::ECHO_MESSAGE;
+        getedInput.type = messageType::ECHO;
     }
     return getedInput;
 }

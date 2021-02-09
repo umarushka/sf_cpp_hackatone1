@@ -38,11 +38,11 @@ void Users::setId(int id) {
     Users::_id = id;
 }
 
-const Messages &Users::getMsg() const {
+const Message &Users::getMsg() const {
     return msg;
 }
 
-void Users::setMsg(const Messages &msg) {
+void Users::setMsg(const Message &msg) {
     Users::msg = msg;
 }
 

@@ -5,6 +5,7 @@
 #include <string>
 
 #include "LoginData.h"
+#include "Messages.h"
 
 enum greetingAnswers
 {
@@ -14,17 +15,10 @@ enum greetingAnswers
     NOTANSWER
 };
 
-enum InputType
-{
-    ECHO_MESSAGE,
-    PRIVATE_MESSAGE,
-    COMMAND
-};
-
 struct userInput
 {
-    InputType type;
-    std::string str;
+    messageType type{ messageType::ECHO };
+    std::string str{};
 };
 
 
@@ -38,7 +32,7 @@ public:
         return instance;
     }
     greetingAnswers start();
-    void addMessageToChat(std::string message); // тут подумать как лучше передавать строку копированием или еще как...
+    void addStrToChat(std::string message); // тут подумать как лучше передавать строку копированием или еще как...
     LoginData login();
     LoginData registration();
     void enter(std::string userName);

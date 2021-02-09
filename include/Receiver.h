@@ -2,18 +2,24 @@
 #define _RECEIVER_H
 
 #include <iostream>
+#include <fstream>
+#include <string> 
+
 #include "Messages.h"
 
 using namespace std;
 
-class Receiver {
-
-    Messages *msg;
-
-  public:
+class Receiver 
+{
+/*
+public:
     Receiver();
 
     virtual ~Receiver();
+
+    Receiver(std::string url) noexcept(false);
+
+    Messages Receiver::getLastMessage() noexcept(false);
 
     Receiver(Receiver & source);
 
@@ -27,5 +33,8 @@ class Receiver {
 
 	Messages & receive();
 
+private:
+    std::ifstream _fin;
+*/
 };
 #endif

@@ -12,7 +12,7 @@ private:
     string _nickname;
     string _password;
     int _rating;
-    Messages msg;
+    Message msg;
 
 public:
 
@@ -32,9 +32,9 @@ public:
 
     friend  ostream & operator<<(ostream & os, const Users & x);
 
-    const Messages &getMsg() const;
+    const Message &getMsg() const;
 
-    void setMsg(const Messages &msg);
+    void setMsg(const Message &msg);
 
     int getId() const;
 

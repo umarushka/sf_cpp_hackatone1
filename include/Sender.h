@@ -2,28 +2,21 @@
 #define _SENDER_H
 
 #include <iostream>
+#include <fstream>
+#include <string> 
+#include <vector>
+
 #include "Messages.h"
-#include "Users.h"
-#include "Subject.h"
-#include "Channel.h"
 
-using namespace std;
-
-class Sender {
-
-    Channel<Users> *someSender;
-
+class Sender 
+{
 public:
-    Channel<Users> *getSomeSender() const;
+    Sender() noexcept(false);
+    Sender::Sender(std::string url) noexcept(false);
+    std::vector<Message> getLog();
+    void addMessage(Message msg) noexcept(false);
 
-    void setSomeSender(Channel<Users> *someSender);
-
-public:
-    Sender();
-
-    Sender(Channel<Users> *someSender);
-
-    virtual ~Sender();
+    ~Sender();
 
     Sender(Sender & source);
 
@@ -31,11 +24,12 @@ public:
 
     Sender & operator=(Sender & source);
 
-    Sender & operator=(const Sender & source);
+    Sender& operator=(const Sender& source);
 
-    friend  ostream & operator<<(ostream & os, const Sender & x);
+	// bool send(Messages &msg);
 
-	bool send(Messages &msg);
-
+private:
+    std::string _url;
+    std::fstream _fileStr;
 };
 #endif

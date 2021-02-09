@@ -1,38 +1,21 @@
 #ifndef _MESSAGES_H
 #define _MESSAGES_H
 
-#include <iostream>
+#include <string>
 
-using namespace std;
+enum messageType
+{
+    ECHO,
+    PRIVATE,
+    COMMAND
+};
 
-class Messages {
-
-    string msg;
-
-  public:
-    Messages();
-
-    const string &getMsg() const;
-
-	string &getMsg();
-
-    void setMsg(const string &msg);
-
-    virtual ~Messages();
-
-    Messages(Messages & source);
-
-    Messages(const Messages & source);
-
-    Messages & operator=(Messages & source);
-
-    bool operator==(Messages & source);
-
-    Messages & operator=(const Messages & source);
-
-    friend  ostream & operator<<(ostream & os, const Messages & x);
-
-
+struct Message 
+{
+    messageType type{messageType::ECHO};
+    int fromUserId{1}; 
+    int toUserId{0};
+    std::string str{""};
 
 };
 #endif

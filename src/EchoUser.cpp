@@ -39,6 +39,7 @@ bool EchoUser::hasPacket() {
 }
 
 void EchoUser::sendPacket() {
+    /*
     if (hasPacket()) {
         Messages msg;
         msg.setMsg("User message was received ...");
@@ -48,5 +49,6 @@ void EchoUser::sendPacket() {
         userSendReceive->setState(users);
 //        userSendReceive->detach("stateHandle");
     }
+    */
 }
 
