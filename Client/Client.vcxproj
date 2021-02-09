@@ -89,6 +89,7 @@
     <ClInclude Include="..\include\Receiver.h" />
     <ClInclude Include="..\include\Sender.h" />
     <ClInclude Include="..\include\Users.h" />
+    <ClInclude Include="requestsToServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Client.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="..\src\Receiver.cpp" />
     <ClCompile Include="..\src\Sender.cpp" />
     <ClCompile Include="..\src\Users.cpp" />
+    <ClCompile Include="requestsToServer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

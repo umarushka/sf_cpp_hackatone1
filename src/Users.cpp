@@ -1,72 +1,104 @@
-/*
-	Модуль\класс работы с пользователем
- */
-
 #include "Users.h"
 
-Users::Users() {}
-
-Users::Users(string name, int id, int level): _nickname(name), _id(id), _rating(level) {
+UsersDBMapping::UsersDBMapping(std::string userBDName) :
+    _nameDB(userBDName) 
+{
 }
 
-Users::~Users() {
+void UsersDBMapping::readUsersData() noexcept(false)
+{
+    std::string readStr;
+    _BDStream.open(_nameDB, std::ios::in);
+    if (!_BDStream.is_open())  // исключение 
+    {
+    }
+    _usersData.clear();//Лучше куда-то сохранять данные, на случай если с новыми что-то не так (транзакция)
+    while (!_BDStream.eof())
+    {
+        getline(_BDStream, readStr);
+        if (readStr == "<User>")
+        {
+            User user;
+            getline(_BDStream, readStr);
+            user.id = stoi(readStr);
+            getline(_BDStream, user.nickName);
+            getline(_BDStream, user.password); // Хранение паролей в открытом виде!!! Убрать при первой возможности. 
+            getline(_BDStream, readStr);
+            user.onlineStatus = stoi(readStr); // исключение если там нет числа
+            getline(_BDStream, readStr);
+            user.rating = stoi(readStr); // исключение если там нет числа
+            _usersData.push_back(user);
+        }
+        else
+        {// исключение
+
+        }
+    }
+    _BDStream.close(); // аккуратно с исключениями, можно его вызвать и забыть закрыть файл
 }
 
-Users::Users(Users & source) {
+
+std::vector<User> UsersDBMapping::getUsersData() noexcept(false)
+{
+    return _usersData;
 }
 
-Users::Users(const Users & source) {
+void UsersDBMapping::saveUsersData()
+{
+    _BDStream.open(_nameDB, std::ios::out);
+    if (!_BDStream.is_open())  // исключение 
+    {
+    }
+
+    for (User newUser : _usersData)
+    {
+        _BDStream << "<User>" << std::endl;
+        _BDStream << newUser.id << std::endl;
+        _BDStream << newUser.nickName << std::endl;
+        _BDStream << newUser.password << std::endl;
+        _BDStream << newUser.onlineStatus << std::endl;
+        _BDStream << newUser.rating << std::endl;
+    }
+    _BDStream.close();
 }
 
-Users & Users::operator=(Users & source) {
-	return source;
+void  UsersDBMapping::setUsersData(std::vector<User> usersData)
+{
+    _usersData = usersData;
 }
 
-Users & Users::operator=(const Users & source) {
-	return const_cast<Users &>(source);
+int UsersDBMapping::findUser(std::string nickName)
+{
+    for (User user : _usersData)
+    {
+        if (nickName == user.nickName)
+        {
+            return user.id;
+        }
+    }
+    return -1;
 }
 
- ostream & operator<<(ostream & os, const Users & x) {
-	 return os;
+std::string UsersDBMapping::getUserPassFromId(int id)
+{
+    for (User user : _usersData)
+    {
+        if (id == user.id)
+        {
+            return user.password;
+        }
+    }
+    return "";
 }
 
-int Users::getId() const {
-    return _id;
+std::string UsersDBMapping::getUserNickNameFromId(int id)
+{
+    for (User user : _usersData)
+    {
+        if (id == user.id)
+        {
+            return user.nickName;
+        }
+    }
+    return "";
 }
-
-void Users::setId(int id) {
-    Users::_id = id;
-}
-
-const Message &Users::getMsg() const {
-    return msg;
-}
-
-void Users::setMsg(const Message &msg) {
-    Users::msg = msg;
-}
-
-const string &Users::getNickname() const {
-    return _nickname;
-}
-
-void Users::setNickname(const string &nickname) {
-    _nickname = nickname;
-}
-
-const string &Users::getPassword() const {
-    return _password;
-}
-
-void Users::setPassword(const string &password) {
-    _password = password;
-}
-
-double Users::getRating() const {
-    return _rating;
-}
-
-void Users::setRating(double rating) {
-    _rating = rating;
-}
-

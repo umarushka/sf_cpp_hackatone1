@@ -45,6 +45,9 @@
     <ClInclude Include="..\include\EchoUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="requestsToServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Actions.cpp">
@@ -78,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\EchoUser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="requestsToServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

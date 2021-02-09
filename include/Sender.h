@@ -8,28 +8,16 @@
 
 #include "Messages.h"
 
-class Sender 
+class Sender // нужно переименовать
 {
 public:
-    Sender() noexcept(false);
-    Sender::Sender(std::string url) noexcept(false);
-    std::vector<Message> getLog();
+    Sender() = default;
+    Sender::Sender(std::string url);
+    std::vector<Message> getLog() noexcept(false);
     void addMessage(Message msg) noexcept(false);
-
-    ~Sender();
-
-    Sender(Sender & source);
-
-    Sender(const Sender & source);
-
-    Sender & operator=(Sender & source);
-
-    Sender& operator=(const Sender& source);
-
-	// bool send(Messages &msg);
 
 private:
     std::string _url;
-    std::fstream _fileStr;
+    std::fstream _fileStream;
 };
 #endif

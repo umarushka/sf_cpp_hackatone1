@@ -7,10 +7,14 @@
 #include "Sender.h"
 #include "Messages.h"
 #include "Receiver.h"
+#include "Users.h"
 
 AdapterInterAction::AdapterInterAction()
 {
-    Sender chatChannel("chatData"); // создание канала приема сообщений
+    Sender chatChannel("chatData"); // это и UsersDBMapping требуется перенести в requestsToServer и инициализировать там, а суда передавать. 
+    UsersDBMapping usersMapper("userData");
+    usersMapper.readUsersData();
+    std::vector<User> usersData = usersMapper.getUsersData();
     InterActionConsole& UI = InterActionConsole::getInstance();
     greetingAnswers stAnswer = greetingAnswers::NOTANSWER;
     while (stAnswer == NOTANSWER)
@@ -23,15 +27,14 @@ AdapterInterAction::AdapterInterAction()
         }
         if (stAnswer == greetingAnswers::LOGIN)
         {   
-            
             LoginData inputLogin = UI.login();
-            if ((inputLogin.getLogin() == "123") &&
-                (inputLogin.getPassword() == "123"))
+            int loginedId = usersMapper.findUser(inputLogin.getLogin());
+            if ((loginedId != -1) && (inputLogin.getPassword() == usersMapper.getUserPassFromId(loginedId)))
             {
                 std::vector<Message> log = chatChannel.getLog();
                 for (Message msg : log)
                 {
-                    UI.addStrToChat("<TestUser>: " + msg.str);
+                    UI.addStrToChat("<" + usersMapper.getUserNickNameFromId(msg.fromUserId) + ">: " + msg.str);
                 }
                 UI.enter(inputLogin.getLogin());
                 userInput input;
@@ -43,7 +46,7 @@ AdapterInterAction::AdapterInterAction()
                     UI.addStrToChat("<" + inputLogin.getLogin() + ">: "+ input.str );
                     Message sendMsg;
                     sendMsg.type = messageType::ECHO;
-                    sendMsg.fromUserId = 2; // Заглушка пока нет пользователей
+                    sendMsg.fromUserId = loginedId;
                     sendMsg.str = input.str;
                     // id = 2;
                     chatChannel.addMessage(sendMsg);    

@@ -2,55 +2,38 @@
 #define _USERS_H
 
 #include <iostream>
+#include <fstream>
+#include <string> 
+#include <vector>
+
 #include "Messages.h"
 
-using namespace std;
+struct User
+{
+    int id;
+    std::string nickName;
+    std::string password;
+    bool onlineStatus{ false };
+    int rating{0};
+};
 
-class Users {
-private:
-    int _id;
-    string _nickname;
-    string _password;
-    int _rating;
-    Message msg;
-
+class UsersDBMapping
+{
 public:
+    UsersDBMapping() = default;
+    UsersDBMapping(std::string nameDB);
+    void UsersDBMapping::readUsersData() noexcept(false);
+    void saveUsersData();
+    std::vector<User> UsersDBMapping::getUsersData() noexcept(false); // Не хорошо, что эта функция возвращает пользователей вместе с паролями. Желательно отдельная функция получения пароля по id. Т.к. этот вектор может использоваться например для вывода списка пользователей и т.д.
+    void setUsersData(std::vector<User> usersData);
+    int findUser(std::string nickName) noexcept(false);
+    std::string getUserPassFromId(int id);
+    std::string getUserNickNameFromId(int id);
+    void addUser(User newUser);
 
-    Users();
-
-    Users(string name, int id, int level);
-
-    virtual ~Users();
-
-    Users(Users & source);
-
-    Users(const Users & source);
-
-    Users & operator=(Users & source);
-
-    Users & operator=(const Users & source);
-
-    friend  ostream & operator<<(ostream & os, const Users & x);
-
-    const Message &getMsg() const;
-
-    void setMsg(const Message &msg);
-
-    int getId() const;
-
-    void setId(int id);
-
-    const string &getNickname() const;
-
-    void setNickname(const string &nickname);
-
-    const string &getPassword() const;
-
-    void setPassword(const string &password);
-
-    double getRating() const;
-
-    void setRating(double rating);
-
+private:
+    std::string _nameDB;
+    std::fstream _BDStream;
+    std::vector<User> _usersData;
 };
 #endif
