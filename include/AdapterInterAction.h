@@ -3,23 +3,20 @@
 
 #include <iostream>
 
-using namespace std;
+#include "InterActionConsole.h"
+#include "Sender.h"
+#include "Users.h"
 
-class AdapterInterAction {
+class AdapterInterAction 
+{
   public:
-    AdapterInterAction();
+    AdapterInterAction() = default;
+    AdapterInterAction(InterActionConsole& UI, Sender& chatChannel, UsersDBMapping& usersMapper );
+    void run();
 
-    virtual ~AdapterInterAction();
-
-    AdapterInterAction(AdapterInterAction & source);
-
-    AdapterInterAction(const AdapterInterAction & source);
-
-    AdapterInterAction & operator=(AdapterInterAction & source);
-
-    AdapterInterAction & operator=(const AdapterInterAction & source);
-
-    friend  ostream & operator<<(ostream & os, const AdapterInterAction & x);
-
+private:
+    InterActionConsole& _UI;
+    Sender& _chatChannel;
+    UsersDBMapping& _usersMapper;
 };
 #endif

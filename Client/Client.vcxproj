@@ -79,31 +79,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\Actions.h" />
     <ClInclude Include="..\include\AdapterInterAction.h" />
-    <ClInclude Include="..\include\Channel.h" />
-    <ClInclude Include="..\include\EchoUser.h" />
     <ClInclude Include="..\include\InterActionConsole.h" />
     <ClInclude Include="..\include\LoginData.h" />
     <ClInclude Include="..\include\Messages.h" />
-    <ClInclude Include="..\include\Receiver.h" />
     <ClInclude Include="..\include\Sender.h" />
     <ClInclude Include="..\include\Users.h" />
-    <ClInclude Include="requestsToServer.h" />
+    <ClInclude Include="RequestsToServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Client.cpp" />
-    <ClCompile Include="..\src\Actions.cpp" />
     <ClCompile Include="..\src\AdapterInterAction.cpp" />
-    <ClCompile Include="..\src\Channel.cpp" />
-    <ClCompile Include="..\src\EchoUser.cpp" />
     <ClCompile Include="..\src\InterActionConsole.cpp" />
     <ClCompile Include="..\src\LoginData.cpp" />
-    <ClCompile Include="..\src\Messages.cpp" />
-    <ClCompile Include="..\src\Receiver.cpp" />
     <ClCompile Include="..\src\Sender.cpp" />
     <ClCompile Include="..\src\Users.cpp" />
-    <ClCompile Include="requestsToServer.cpp" />
+    <ClCompile Include="RequestsToServer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

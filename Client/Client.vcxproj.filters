@@ -15,22 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\Actions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\AdapterInterAction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Channel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\InterActionConsole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Messages.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Receiver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Sender.h">
@@ -42,30 +33,15 @@
     <ClInclude Include="..\include\LoginData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\EchoUser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="requestsToServer.h">
+    <ClInclude Include="RequestsToServer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Actions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\AdapterInterAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Channel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\InterActionConsole.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Messages.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Receiver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Sender.cpp">
@@ -80,10 +56,7 @@
     <ClCompile Include="..\src\LoginData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\EchoUser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="requestsToServer.cpp">
+    <ClCompile Include="RequestsToServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -32,7 +32,7 @@ public:
         return instance;
     }
     greetingAnswers start();
-    void addStrToChat(std::string message); // тут подумать как лучше передавать строку копированием или еще как...
+    void addStrToChat(std::string message);
     LoginData login();
     LoginData registration();
     void enter(std::string userName);
@@ -54,6 +54,6 @@ private:
     const int _chatStrQuantity = 25;
     const int _dataStrLength = 70;
     std::string _userName;
-    std::string *_data; // пожалуй не лучшее название, стоит оттолкнуться от _chatStrQuantity
+    std::string *_data;
 };
 #endif
